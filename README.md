@@ -37,9 +37,7 @@ The `metrics` folder includes various metrics for evaluating and filtering recom
 
 ### group_diversity.py
 
-### group_diversity.py
-
-This file contains functions for calculating group diversity based on uniqueness metrics using either Kernel Density Estimation (KDE) or K-Nearest Neighbors (KNN) methods.
+Contains functions for calculating group diversity based on uniqueness metrics using either Kernel Density Estimation (KDE) or K-Nearest Neighbors (KNN) methods.
 
 Key function:
 - `group_diversity(embeddings, threshold, diversity_metric='kde', num_neighbors=5)`
@@ -56,7 +54,7 @@ Key function:
 
 ### knn_uniqueness.py
 
-This file implements a method for estimating the uniqueness of items using the K-Nearest Neighbors algorithm.
+Implements a method for estimating the uniqueness of items using the K-Nearest Neighbors algorithm.
 
 Key function:
 - `knn_uniqueness(embeddings, num_neighbors=5)`
@@ -70,7 +68,7 @@ Key function:
 
 ### kde_uniqueness.py
 
-This file implements a method for estimating item uniqueness using Kernel Density Estimation.
+Implements a method for estimating item uniqueness using Kernel Density Estimation.
 
 Presumed key function:
 - `kde_uniqueness(embeddings)`
@@ -85,7 +83,7 @@ These functions work together to provide a comprehensive approach to assessing a
 
 ## Filtering Service
 
-The main component of this project is the `filtering_service.py`, which provides an API for filtering recommendations based on various criteria.
+The main component of this project is the `filtering_service.py`, which provides an API for filtering recommendations based on their diversity estimated via KNN or KDE (by default).
 
 Key features:
 - Loads item embeddings
