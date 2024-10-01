@@ -70,7 +70,7 @@ Key function:
 
 ### kde_uniqueness.py
 
-This file, although not shown in the context, likely implements a method for estimating item uniqueness using Kernel Density Estimation.
+This file implements a method for estimating item uniqueness using Kernel Density Estimation.
 
 Presumed key function:
 - `kde_uniqueness(embeddings)`
