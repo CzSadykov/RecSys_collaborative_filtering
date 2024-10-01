@@ -37,21 +37,51 @@ The `metrics` folder includes various metrics for evaluating and filtering recom
 
 ### group_diversity.py
 
-Calculates group diversity based on uniqueness metrics (KDE or KNN).
+### group_diversity.py
+
+This file contains functions for calculating group diversity based on uniqueness metrics using either Kernel Density Estimation (KDE) or K-Nearest Neighbors (KNN) methods.
 
 Key function:
 - `group_diversity(embeddings, threshold, diversity_metric='kde', num_neighbors=5)`
+  - Parameters:
+    - `embeddings`: A list or array of item embeddings for the group
+    - `threshold`: A float value representing the minimum acceptable diversity score
+    - `diversity_metric`: A string specifying the method to use ('kde' or 'knn')
+    - `num_neighbors`: An integer specifying the number of neighbors to consider for KNN (default is 5)
+  - Function behavior:
+    - Calculates the uniqueness of each item in the group using the specified metric
+    - Computes the overall group diversity by averaging the uniqueness scores
+    - Compares the calculated diversity against the provided threshold
+    - Returns a tuple containing a boolean (True if diverse enough, False otherwise) and the calculated diversity score
 
 ### knn_uniqueness.py
 
-Estimates uniqueness of items using K-nearest neighbors.
+This file implements a method for estimating the uniqueness of items using the K-Nearest Neighbors algorithm.
 
 Key function:
 - `knn_uniqueness(embeddings, num_neighbors=5)`
+  - Parameters:
+    - `embeddings`: A list or array of item embeddings
+    - `num_neighbors`: An integer specifying the number of nearest neighbors to consider (default is 5)
+  - Function behavior:
+    - For each item embedding, finds the K nearest neighbors in the embedding space
+    - Calculates the average distance to these neighbors
+    - Returns an array of uniqueness scores, where higher scores indicate more unique items
 
 ### kde_uniqueness.py
 
-(Not shown in the context, but likely implements KDE-based uniqueness estimation)
+This file, although not shown in the context, likely implements a method for estimating item uniqueness using Kernel Density Estimation.
+
+Presumed key function:
+- `kde_uniqueness(embeddings)`
+  - Parameters:
+    - `embeddings`: A list or array of item embeddings
+  - Likely function behavior:
+    - Estimates the probability density function of the item embeddings in the feature space
+    - Calculates the uniqueness of each item based on its position in the estimated density
+    - Returns an array of uniqueness scores, where lower density areas correspond to higher uniqueness
+
+These functions work together to provide a comprehensive approach to assessing and ensuring diversity in recommendation groups, allowing for flexible application in various recommendation scenarios.
 
 ## Filtering Service
 
@@ -79,6 +109,7 @@ To use the Filtering Service, follow these steps:
      ```
    - Make sure your data path and output path are correctly set in the `.env` file.
    - The generated embeddings should be stored as a dictionary where keys are item IDs and values are the corresponding embeddings.
+   - Example files are provided in the `cf_embeddings` folder. You can dive into the code to understand how to generate embeddings for your own data.
 
 3. Start the Filtering Service:
    - Launch the service by running the `filtering_service.py` script:
